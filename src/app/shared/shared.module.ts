@@ -10,6 +10,10 @@ import { ErrorPageComponent } from './error-page/error-page.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    ErrorPageComponent
+
   ]
 })
 export class SharedModule { }
