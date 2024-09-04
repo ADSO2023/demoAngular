@@ -1,1 +1,29 @@
-<p>register works!</p>
+<div class="register-container">
+  <form class="flex flex-column register-box">
+    <span class="text-lg mb-4">Registrar</span>
+
+    <mat-form-field appearance="outline" class="register-input">
+      <mat-label>Nombre de usuario</mat-label>
+      <input type="text" matInput placeholder="Nombre de usuario" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="register-input">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput placeholder="Contraseña" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="register-input">
+      <mat-label>Repetir Password</mat-label>
+      <input type="password" matInput placeholder="Repite la contraseña" required />
+    </mat-form-field>
+
+    <button mat-button mat-flat-button color="primary" class="register-button">
+      Registrar
+      <mat-icon class="ml-2">save</mat-icon>
+    </button>
+
+    <div class="flex justify-content-end mt-5">
+      <a routerLink="/auth/login">¿Ya tienes cuenta?</a>
+    </div>
+  </form>
+</div>
