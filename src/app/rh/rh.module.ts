@@ -7,6 +7,7 @@ import { ListEmployeesComponent } from './pages/list-employees/list-employees.co
 import { NewEmployeeComponent } from './pages/new-employee/new-employee.component';
 import { SearchEmployeeComponent } from './pages/search-employee/search-employee.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { EmployeeComponent } from './pages/employee/employee.component';
   ],
   imports: [
     CommonModule,
-    RhRoutingModule
+    RhRoutingModule,
+    MaterialModule
   ]
 })
 export class RhModule { }
