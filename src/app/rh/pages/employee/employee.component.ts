@@ -1,10 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EmployeesService } from './../../services/employee.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { Employee } from '../../interfaces/employee.interface';
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrl: './employee.component.scss'
+  styleUrl: './employee.component.scss',
 })
-export class EmployeeComponent {
+export class EmployeeComponent implements OnInit {
+  employee?: Employee;
+  constructor(
+    private employeesService: EmployeesService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
+  ngOnInit(): void {
+    this.activatedRoute.params
+      .pipe(switchMap(({ id }) => this.employeesService.getEmpleadosXId(id)))
+      .subscribe((employee) => {
+        if (!employee) return this.router.navigate(['/rh/list']);
+        this.employee = employee;
+        console.log(employee);
+        return;
+      });
+  }
 }

@@ -8,6 +8,8 @@ import { NewEmployeeComponent } from './pages/new-employee/new-employee.componen
 import { SearchEmployeeComponent } from './pages/search-employee/search-employee.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { MaterialModule } from '../material/material.module';
+import { CardEmployeeComponent } from './components/card-employee/card-employee.component';
+import { ImgPipe } from './pipes/imgPipe.pipe';
 
 
 @NgModule({
@@ -16,12 +18,10 @@ import { MaterialModule } from '../material/material.module';
     ListEmployeesComponent,
     NewEmployeeComponent,
     SearchEmployeeComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    CardEmployeeComponent,
+    ImgPipe,
   ],
-  imports: [
-    CommonModule,
-    RhRoutingModule,
-    MaterialModule
-  ]
+  imports: [CommonModule, RhRoutingModule, MaterialModule],
 })
-export class RhModule { }
+export class RhModule {}

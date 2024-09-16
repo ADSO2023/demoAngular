@@ -1,15 +1,69 @@
 {
-  "users": [
+  "empleados": [
     {
       "id": 1,
-      "usuario": "fabiancol",
-      "email": "fabian.col@gmail.com"
+      "idEmpleado": 1,
+      "nombreEmpleado": "Maricela Torres",
+      "departamento": {
+        "idDepartamento": 1,
+        "nombreDepartamento": "Ventas"
+      },
+      "sueldoEmpleado": 950000.0,
+      "imagenUrl": "https://randomuser.me/api/portraits/women/55.jpg",
+      "descripcion": "Ejecutiva de ventas con más de 5 años de experiencia en el sector comercial.",
+      "habilidades": "Comunicación, Negociación, Estrategia, Gestión de clientes",
+      "estado": "Activo"
     },
     {
       "id": 2,
-      "usuario": "John Doe",
-      "email": "john.due@gmail.com"
+      "idEmpleado": 2,
+      "nombreEmpleado": "Jaime Sierra",
+      "departamento": {
+        "idDepartamento": 3,
+        "nombreDepartamento": "Recursos Humanos"
+      },
+      "sueldoEmpleado": 550000.0,
+      "imagenUrl": "https://randomuser.me/api/portraits/men/15.jpg",
+      "descripcion": "Especialista en Recursos Humanos con amplia experiencia en selección de personal.",
+      "habilidades": "Reclutamiento, Evaluación, Capacitación, Comunicación"
+    },
+    {
+      "id": 3,
+      "idEmpleado": 3,
+      "nombreEmpleado": "Laura Gómez",
+      "departamento": {
+        "idDepartamento": 2,
+        "nombreDepartamento": "Finanzas"
+      },
+      "sueldoEmpleado": 780000.0,
+      "imagenUrl": "https://randomuser.me/api/portraits/women/95.jpg",
+      "descripcion": "Analista financiera con habilidades en gestión presupuestaria y análisis de datos.",
+      "habilidades": "Análisis de datos, Contabilidad, Planificación, Gestión presupuestaria"
+    },
+    {
+      "id": 4,
+      "idEmpleado": 4,
+      "nombreEmpleado": "Carlos Pérez",
+      "departamento": {
+        "idDepartamento": 4,
+        "nombreDepartamento": "IT"
+      },
+      "sueldoEmpleado": 1200000.0,
+      "imagenUrl": "https://randomuser.me/api/portraits/men/75.jpg",
+      "descripcion": "Desarrollador de software con más de 8 años de experiencia en tecnologías web.",
+      "habilidades": "Programación, Desarrollo, Testing, Seguridad"
+    }
+  ],
+  "departamentos": [
+    {
+      "id": 1,
+      "idDepartamento": 1,
+      "nombreDepartamento": "IT"
+    },
+    {
+      "id": 2,
+      "idDepartamento": 2,
+      "nombreDepartamento": "IT22"
     }
   ]
-
 }

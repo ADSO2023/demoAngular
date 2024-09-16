@@ -20,8 +20,5 @@ export class LayoutComponent {
     }
   ];
 
-  constructor() {
-    console.log(this.sidebarItems);
-    ;
-  }
+  constructor() {}
 }
