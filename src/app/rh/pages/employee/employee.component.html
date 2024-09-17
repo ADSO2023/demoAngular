@@ -1,1 +1,44 @@
-<p>employee works!</p>
+@if (employee) {
+<div class="grid">
+  <mat-card class="col-12 sm:col-6 mt-2">
+    <mat-card-header>
+      <mat-card-subtitle>{{ employee.nombreEmpleado }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img [src]="employee | ImgPipe" [alt]="employee.nombreEmpleado" />
+  </mat-card>
+
+  <mat-card class="col-12 sm:col-6 mt-2">
+    <mat-card-header>
+      <mat-card-title>Informarción del Empleado</mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-subtitle
+        >Área de trabajo {{
+          employee.departamento.nombreDepartamento
+        }}</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      {{ employee.descripcion }}
+      <mat-list>
+        <mat-list-item
+          >Salario: {{ employee.sueldoEmpleado | currency }}</mat-list-item
+        >
+        <mat-list-item>
+         Habilidades:
+        </mat-list-item>
+         <mat-card-content>{{ employee.habilidades }}</mat-card-content>
+      </mat-list>
+
+      <button mat-raised-button (click)="goBack()" >Volver</button>
+    </mat-card-content>
+  </mat-card>
+</div>
+} @else {
+<mat-grid-list cols="1">
+  <mat-grid-tile>
+    <mat-spinner></mat-spinner>
+    Cargando datos
+  </mat-grid-tile>
+</mat-grid-list>
+}

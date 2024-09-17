@@ -8,14 +8,15 @@
 
   <!-- TODO: img empl-->
 
-  <img mat-card-image [src]="emp | ImgPipe" alt="Imagen empleado" style="height: 90px; width: 90px;">
-   <!-- 
+
+   <!--
 <img [src]="'./assets/employees/1.jpg'" alt="" style="height: 90px; width: 90px;">
 
 
 -->
 
   <mat-card-content class="mt-2">
+    <img mat-card-image [src]="emp | ImgPipe" alt="Imagen empleado" style="height: 90px; width: 90px;">
     <p><strong>Perfil profesional</strong></p>
     <p>{{ emp.descripcion }}</p>
     <p><strong>Habilidades</strong></p>
