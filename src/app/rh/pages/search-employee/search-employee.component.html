@@ -1,31 +1,31 @@
 <div class="flex flex-column p-2">
-<mat-form-field>
-  <mat-label>Buscador de empleados</mat-label>
-  <input
-    type="text"
-    matInput
-    [formControl]="myControl"
-    (input)="SearchEmployee()"
-    [matAutocomplete]="auto"
-  />
+  <mat-form-field>
+    <mat-label>Buscador de empleados</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="myControl"
+      (input)="SearchEmployee()"
+      [matAutocomplete]="auto"
+    />
 
-  <mat-autocomplete autoActiveFirstOption
-    #auto="matAutocomplete"
-    (optionSelected)="onSelectedOption( $event )"
+    <mat-autocomplete
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+      (optionSelected)="onSelectedOption($event)"
     >
-    @for (emp of employees; track $index) {
-    <mat-option [value]="emp" >
-      {{ emp.nombreEmpleado }}
-    </mat-option>
-  }
-@if (employees.length === 0 && myControl.value && myControl.value.length > 0) {
-    <mat-option>
-      No se encontró nada con el término {{ myControl.value }}
-    </mat-option>
-  }
-  </mat-autocomplete>
+      @for (emp of employees; track $index) {
+      <mat-option [value]="emp">
+        {{ emp.nombreEmpleado }}
+      </mat-option>
+      } @if (employees.length === 0 && myControl.value && myControl.value.length
+      > 0) {
+      <mat-option>
+        No se encontró nada con el término {{ myControl.value }}
+      </mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
 
-</mat-form-field>
-
-{{ selectedEmployee | json }}
+  {{ selectedEmployee | json }}
 </div>

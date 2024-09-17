@@ -11,9 +11,9 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: 'new-employee', component: NewEmployeeComponent },
+      { path: 'create', component: NewEmployeeComponent },
       { path: 'search', component: SearchEmployeeComponent },
-      { path: 'edit/:id', component: EmployeeComponent },
+      { path: 'view/:id', component: EmployeeComponent },
       { path: 'list', component: ListEmployeesComponent },
       { path: ':id', component: EmployeeComponent },
       { path: '**', redirectTo: 'list' },

@@ -1,1 +1,72 @@
-<p>new-employee works!</p>
+<h1>
+  Crear | Editar
+  <small>Empleado</small>
+</h1>
+
+<mat-divider class="mb-2"></mat-divider>
+
+<div class="grid">
+  <div class="col-12 sm:col-6">
+    <mat-card>
+      <mat-card-content>
+        <div class="grid">
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" required />
+          </mat-form-field>
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Apellido</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+          <mat-form-field class="col-12">
+            <mat-label>Departamento</mat-label>
+            <mat-select required="">
+              @for (depto of departaments; track $index) {
+              <mat-option [value]="depto.idDepartamento">{{
+                depto.nombreDepartamento
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="col-12">
+            <mat-label>Perfil profesional</mat-label>
+            <textarea matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" >
+            </textarea>
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>Habilidades</mat-label>
+            <textarea matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" >
+            </textarea>
+          </mat-form-field>
+        </div>
+        <div class="flex justify-content-between">
+          <button mat-flat-button color="warn" class="di">
+            <mat-icon>delete</mat-icon>
+            Eliminar
+          </button>
+
+          <button mat-flat-button color="primary">
+            <mat-icon>save</mat-icon>
+            Guardar
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-12 sm:col-6">
+    <mat-card>
+      <img src="" alt="Img Empleado" mat-card-image>
+    </mat-card>
+  </div>
+</div>

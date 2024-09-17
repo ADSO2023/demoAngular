@@ -1,3 +1,5 @@
+import { Department } from "./departament.interface";
+
 export interface Employee {
   idEmpleado:     number;
   nombreEmpleado: string;
@@ -8,7 +10,4 @@ export interface Employee {
   habilidades: string;
   imgAlternative ?: string;
 }
-  export interface Department {
-  idDepartamento:     number;
-  nombreDepartamento: string;
-}
+
