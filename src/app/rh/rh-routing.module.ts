@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       { path: 'create', component: NewEmployeeComponent },
       { path: 'search', component: SearchEmployeeComponent },
-      { path: 'view/:id', component: EmployeeComponent },
+      { path: 'edit/:id', component: NewEmployeeComponent },
       { path: 'list', component: ListEmployeesComponent },
       { path: ':id', component: EmployeeComponent },
       { path: '**', redirectTo: 'list' },

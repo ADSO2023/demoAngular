@@ -6,18 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
-
   public sidebarItems = [
     {
-      label: 'listado',
+      label: 'Listar',
       icon: 'label',
       url: './list',
     },
     {
-      label: 'crear',
+      label: 'Crear',
       icon: 'add',
       url: './create',
-    }
+    },
+    { label: 'Buscar', icon: 'search', url: './search' },
   ];
 
   constructor() {}

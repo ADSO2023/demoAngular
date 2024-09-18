@@ -7,12 +7,10 @@ import { Employee } from '../interfaces/employee.interface';
 })
 export class ImgPipe implements PipeTransform {
   transform(emp: Employee): string {
-    if (!emp.idEmpleado && !emp.imgAlternative) {
-      return '/assets/default.png';
+    if (!emp.idEmpleado && !emp.imagenUrl) {
+      return 'assets/default.png';
     }
-
-    if (emp.imgAlternative) {return emp.imgAlternative};
-
-    return emp.imagenUrl;
+    if (emp.imagenUrl) return emp.imagenUrl;
+    return `${emp.imagenUrl}`;
   }
 }

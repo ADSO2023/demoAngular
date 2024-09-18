@@ -34,8 +34,6 @@ export class SearchEmployeeComponent {
     const employee: Employee = event.option.value;
     this.myControl.setValue( employee.nombreEmpleado );
     this.selectedEmployee = employee;
-    console.log(employee);
-
   }
 
 }

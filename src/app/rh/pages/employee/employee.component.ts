@@ -25,7 +25,6 @@ export class EmployeeComponent implements OnInit {
     ).subscribe(rta => {
       if(!rta) return this.router.navigate(['/rh/list']);
       this.employee = rta;
-      console.log(rta);
       return;
     });
   }

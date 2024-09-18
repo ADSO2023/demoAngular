@@ -1,13 +1,17 @@
 import { Department } from "./departament.interface";
 
+
 export interface Employee {
   idEmpleado:     number;
   nombreEmpleado: string;
-  departamento:   Department;
+  departamento?:   Department ;
   sueldoEmpleado: number;
-  imagenUrl : string;
+  imagenUrl?: string;
   descripcion: string;
   habilidades: string;
-  imgAlternative ?: string;
+  //imgAlternative ?: string;
+  estado ?: string;
 }
+
+
 

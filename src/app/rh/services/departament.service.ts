@@ -15,6 +15,6 @@ export class DepartamentService {
 
 
   getDepartamentos(): Observable<Department[]> {
-    return this.http.get<Department[]>(this.apiUrl + '/departamentos');
+    return this.http.get<Department[]>(this.apiUrl + 'departamentos');
   }
 }
