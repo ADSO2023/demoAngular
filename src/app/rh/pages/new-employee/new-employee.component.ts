@@ -75,7 +75,7 @@ export class NewEmployeeComponent implements OnInit {
     this.employeesService
       .createEmpleado(this.currentEmployee)
       .subscribe((emp) => {
-        //TODO: Mostar el mensaje de regitro correctamente el empleado redireccionar
+        //TODO: Mostar el mensaje de regitro correctamente el empleado redireccionar /
         console.log(emp);
       });
 
