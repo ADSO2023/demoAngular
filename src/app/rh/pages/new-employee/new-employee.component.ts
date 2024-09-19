@@ -6,7 +6,7 @@ import { EmployeesService } from './../../services/employee.service';
 import { Employee } from '../../interfaces/employee.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-new-employee',
   templateUrl: './new-employee.component.html',
@@ -28,21 +28,18 @@ export class NewEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.departamentService
-    .getDepartamentos()
-    .subscribe((rta) => (this.departaments = rta));
+      .getDepartamentos()
+      .subscribe((rta) => (this.departaments = rta));
 
     if (!this.router.url.includes('edit')) return;
 
-
-    this.activatedRoute.params.pipe(
-      switchMap(({ id }) => this.employeesService.getEmpleadosXId(id)),
-      ).subscribe((rta) => {
+    this.activatedRoute.params
+      .pipe(switchMap(({ id }) => this.employeesService.getEmpleadosXId(id)))
+      .subscribe((rta) => {
         if (!rta) return this.router.navigate(['/']);
         this.formEmployee.reset(rta);
         return;
       });
-
-
   }
 
   public formEmployee = new FormGroup({
@@ -69,11 +66,10 @@ export class NewEmployeeComponent implements OnInit {
         (emp) => {
           // Mostrar el mensaje de actualización del empleado
           Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Actualización exitosa",
-            showConfirmButton: true,
-            timer: 1500,
+            title: 'Actualización',
+            text: 'El empleado ha sido actualizado.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar', // Cambiar "OK" por "Aceptar"
           });
 
           // Redireccionar después de la actualización
@@ -83,10 +79,9 @@ export class NewEmployeeComponent implements OnInit {
           // Manejar errores si ocurren
           console.error('Error al actualizar el empleado:', error);
           Swal.fire({
-            position: "top-end",
-            icon: "error",
-            title: "Error al actualizar",
-            text: "Ocurrió un problema al actualizar el empleado.",
+            icon: 'error',
+            title: 'Error al actualizar',
+            text: 'Ocurrió un problema al actualizar el empleado.',
             showConfirmButton: true,
           });
         }
@@ -99,11 +94,10 @@ export class NewEmployeeComponent implements OnInit {
       (emp) => {
         // Mostrar el mensaje de registro exitoso
         Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Registro exitoso",
-          showConfirmButton: true,
-          timer: 1500,
+          title: 'Registro',
+          text: 'Registro exitoso',
+          icon: 'success',
+          confirmButtonText: 'Aceptar',
         });
 
         // Redireccionar después del registro
@@ -113,22 +107,64 @@ export class NewEmployeeComponent implements OnInit {
         // Manejar errores si ocurren
         console.error('Error al crear el empleado:', error);
         Swal.fire({
-          position: "top-end",
-          icon: "error",
-          title: "Error al registrar",
-          text: "Ocurrió un problema al registrar el empleado.",
+          position: 'top-end',
+          icon: 'error',
+          title: 'Error al registrar',
+          text: 'Ocurrió un problema al registrar el empleado.',
           showConfirmButton: true,
         });
       }
     );
 
-    // Opción para depuración
     /*
     console.log({
       formIsValid: this.formEmployee.valid,
       value: this.formEmployee.value,
     });
     */
+  }
+
+  onDelete(): void {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esta acción!',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#28a745',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.employeesService.deleteEmpleado(this.currentEmployee.idEmpleado).subscribe(
+          () => {
+            Swal.fire({
+              title: '¡Eliminado!',
+              text: `El empleado ${this.currentEmployee.nombreEmpleado} ha sido eliminado.`,
+              icon: 'success',
+              confirmButtonText: 'Aceptar',
+            });
+            this.router.navigate(['/']);
+          },
+          (error) => {
+            console.error('Error al eliminar el empleado:', error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Ocurrió un problema al eliminar el empleado.',
+              confirmButtonText: 'Aceptar',
+            });
+          }
+        );
+      } else if (result.isDismissed) {
+        Swal.fire({
+          title: 'Cancelado',
+          text: 'La acción de eliminación fue cancelada.',
+          icon: 'info',
+          confirmButtonText: 'Aceptar',
+        });
+      }
+    });
   }
 
 }

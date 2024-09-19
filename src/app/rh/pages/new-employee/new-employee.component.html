@@ -69,7 +69,7 @@
         </form>
         <div class="flex justify-content-between">
           @if (currentEmployee.idEmpleado) {
-          <button mat-flat-button color="warn" class="di">
+          <button mat-flat-button color="warn" class="di" (click)="onDelete()">
             <mat-icon>delete</mat-icon>
             Eliminar
           </button>
