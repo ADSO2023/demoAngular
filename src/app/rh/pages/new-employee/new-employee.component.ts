@@ -6,7 +6,7 @@ import { EmployeesService } from './../../services/employee.service';
 import { Employee } from '../../interfaces/employee.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-new-employee',
   templateUrl: './new-employee.component.html',
@@ -27,6 +27,10 @@ export class NewEmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.departamentService
+    .getDepartamentos()
+    .subscribe((rta) => (this.departaments = rta));
+
     if (!this.router.url.includes('edit')) return;
 
 
@@ -38,9 +42,7 @@ export class NewEmployeeComponent implements OnInit {
         return;
       });
 
-    this.departamentService
-      .getDepartamentos()
-      .subscribe((rta) => (this.departaments = rta));
+
   }
 
   public formEmployee = new FormGroup({
@@ -57,33 +59,76 @@ export class NewEmployeeComponent implements OnInit {
     }),
   });
 
-  onSumit(): void {
+  onSubmit(): void {
+    // Verifica si el formulario es inválido
     if (this.formEmployee.invalid) return;
-    //Existe el ID de empleado
-    if (this.currentEmployee.idEmpleado) {
 
-      this.employeesService
-        .updateEmployee(this.currentEmployee)
-        .subscribe((emp) => {
-          //TODO: Mostar el mensaje de actualizacion  del empleado
-        });
+    // Existe el ID de empleado
+    if (this.currentEmployee.idEmpleado) {
+      this.employeesService.updateEmployee(this.currentEmployee).subscribe(
+        (emp) => {
+          // Mostrar el mensaje de actualización del empleado
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Actualización exitosa",
+            showConfirmButton: true,
+            timer: 1500,
+          });
+
+          // Redireccionar después de la actualización
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          // Manejar errores si ocurren
+          console.error('Error al actualizar el empleado:', error);
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "Error al actualizar",
+            text: "Ocurrió un problema al actualizar el empleado.",
+            showConfirmButton: true,
+          });
+        }
+      );
       return;
     }
 
-    //No existe el empleado
+    // No existe el empleado, crear uno nuevo
+    this.employeesService.createEmpleado(this.currentEmployee).subscribe(
+      (emp) => {
+        // Mostrar el mensaje de registro exitoso
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Registro exitoso",
+          showConfirmButton: true,
+          timer: 1500,
+        });
 
-    this.employeesService
-      .createEmpleado(this.currentEmployee)
-      .subscribe((emp) => {
-        //TODO: Mostar el mensaje de regitro correctamente el empleado redireccionar /
-        console.log(emp);
-      });
+        // Redireccionar después del registro
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        // Manejar errores si ocurren
+        console.error('Error al crear el empleado:', error);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Error al registrar",
+          text: "Ocurrió un problema al registrar el empleado.",
+          showConfirmButton: true,
+        });
+      }
+    );
 
+    // Opción para depuración
     /*
     console.log({
-      fomrIsValid: this.formEmployee.valid,
+      formIsValid: this.formEmployee.valid,
       value: this.formEmployee.value,
-
-      */
+    });
+    */
   }
+
 }

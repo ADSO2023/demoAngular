@@ -9,7 +9,7 @@
   <div class="col-12 sm:col-6">
     <mat-card>
       <mat-card-content>
-        <form class="grid" [formGroup]="formEmployee" (ngSubmit)="onSumit()">
+        <form class="grid" [formGroup]="formEmployee" (ngSubmit)="onSubmit()">
           <mat-form-field class="col-12 sm:col-6">
             <mat-label>Nombre</mat-label>
             <input
@@ -75,7 +75,7 @@
           </button>
         }
         <div></div>
-          <button mat-flat-button color="primary" (click)="onSumit()">
+          <button mat-flat-button color="primary" (click)="onSubmit()">
             <mat-icon>save</mat-icon>
             Guardar
           </button>
