@@ -12,7 +12,9 @@ import { NewEmployeeComponent } from './pages/new-employee/new-employee.componen
 import { SearchEmployeeComponent } from './pages/search-employee/search-employee.component';
 import { CardEmployeeComponent } from './components/card-employee/card-employee.component';
 import { ImgPipe } from './pipes/imgPipe.pipe';
-
+import { DemoComponent } from './pages/demo/demo.component';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,15 @@ import { ImgPipe } from './pipes/imgPipe.pipe';
     SearchEmployeeComponent,
     CardEmployeeComponent,
     ImgPipe,
+    DemoComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RhRoutingModule,
     MaterialModule,
-  ]
+    ToastModule
+  ],
+  providers: [MessageService]
 })
 export class RhModule {}

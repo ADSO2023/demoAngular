@@ -1,5 +1,6 @@
+<p-toast></p-toast>
 <h1>
-  {{currentEmployee.idEmpleado ? 'Editar' : 'Crear'}}
+  {{currentEmployee.idEmpleado ? 'Modificar' : 'Crear'}}
   <small>Empleado</small>
 </h1>
 
@@ -66,6 +67,7 @@
             <mat-label>Link Imagen</mat-label>
             <input matInput type="text" formControlName="imagenUrl" />
           </mat-form-field>
+
         </form>
         <div class="flex justify-content-between">
           @if (currentEmployee.idEmpleado) {
