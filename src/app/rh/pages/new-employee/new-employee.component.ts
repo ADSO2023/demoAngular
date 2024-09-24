@@ -127,7 +127,7 @@ export class NewEmployeeComponent implements OnInit {
       confirmButtonText: 'Aceptar',
       cancelButtonText: 'Cancelar',
       confirmButtonColor: '#004085',
-      cancelButtonColor: '#dc3545', // Cambia este color al acorde con tu tema
+      cancelButtonColor: '#dc3545',
     }).then((result) => {
       if (result.isConfirmed) {
         this.employeesService.deleteEmpleado(this.currentEmployee.idEmpleado).subscribe(
@@ -158,7 +158,7 @@ export class NewEmployeeComponent implements OnInit {
           text: 'La acción de eliminación fue cancelada.',
           icon: 'info',
           confirmButtonText: 'Aceptar',
-          confirmButtonColor: '#004085', // Color acorde con tu tema
+          confirmButtonColor: '#004085',
         });
       }
     });
