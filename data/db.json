@@ -1,4 +1,13 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "idUser": "1",
+      "userName": "FabianCol",
+      "emailUser": "fabiancol@gmail.com",
+      "password": "12345"
+    }
+  ],
   "empleados": [
     {
       "id": 1,

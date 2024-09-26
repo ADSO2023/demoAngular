@@ -26,8 +26,9 @@
     </button>
 
     <span class="espaciado"></span>
+    <span>{{user?.userName}}</span>
 
-    <button mat-button>Salir</button>
+    <button mat-button (click)="onLogout()">Salir</button>
   </mat-toolbar>
 
   <div class="container p-2">
